@@ -25,18 +25,51 @@
     target: '#sideNav'
   });
 
+  // portfolio
+  if($('.isotopeWrapper').length){
 
-  	// Modal popup$(function () {
-  	$('.portfolio-item').magnificPopup({
-  		type: 'inline',
-  		preloader: false,
-  		focus: '#username',
-  		modal: true
-  	});
-  	$(document).on('click', '.portfolio-modal-dismiss', function(e) {
-  		e.preventDefault();
-  		$.magnificPopup.close();
-  	});
+    var $container = $('.isotopeWrapper');
+    var $resize = $('.isotopeWrapper').attr('id');
+    // initialize isotope
 
+    $container.isotope({
+      itemSelector: '.isotopeItem',
+      resizable: false, // disable normal resizing
+      masonry: {
+        columnWidth: $container.width() / $resize
+      }
+    });
+
+    $('#filter a').click(function(){
+      $('#filter a').removeClass('current');
+      $(this).addClass('current');
+      var selector = $(this).attr('data-filter');
+			var test = selector.substring(1);
+			$('article').each(function(){
+				if($(this).hasClass(test)){
+					$(this).removeClass('hidden');
+				}
+			});
+    $container.isotope({
+      filter: selector,
+      animationOptions: {
+      duration: 1000,
+      easing: 'easeOutQuart',
+      queue: false
+      }
+    });
+
+    return false;
+  });
+
+  $(window).smartresize(function(){
+    $container.isotope({
+      // update columnWidth to a percentage of container width
+      masonry: {
+        columnWidth: $container.width() / $resize
+      }
+    });
+  });
+	}
 
 })(jQuery); // End of use strict
