@@ -517,6 +517,45 @@ nav#filter a {
 	font-size: 12px;
 }
 
+/*===========================
+  Reviewing
+============================ */
+
+.HCIER {
+    stroke: #9e9ac8;
+    stroke-width: 2px;
+    fill: #FFF;
+}
+
+.HCIPCM, .HCIGEM, .HCIGE {
+    stroke: #9e9ac8;
+    stroke-width: 2px;
+    fill: #9e9ac8;
+}
+
+.HCIPCC {
+    stroke: #6a51a3;
+    stroke-width: 2px;
+    fill: #6a51a3;
+}
+
+.WDER {
+    stroke: #74c476;
+    stroke-width: 2px;
+    fill: #FFF;
+}
+
+.WDPCM, .WDGEM, .WDGE {
+    stroke: #74c476;
+    stroke-width: 2px;
+    fill: #74c476;
+}
+
+.WDPCC {
+    stroke: #238b45;
+    stroke-width: 2px;
+    fill: #238b45;
+}
 
 /* -------
 .portfolio {
