@@ -1,12 +1,12 @@
 const CVIS = {
     BOOK_LIST: ["Books"],
-    JOUR_LIST: ["TVCG", "ToCHI", "JVLC", "Misc. (HCI/Vis)", "IEEE Software", "SP&E", "SWJ", "Misc. (Web/Data)"],
-    CONF_LIST: ["CHI", "UIST", "CSCW", "ISS", "GI", "INTERACT", "VL/HCC", "EICS", "IUI", "NordiCHI", "CHI (WIP)", "IHM", "Misc. (HCI)", "InfoVis", "VAST", "SciVis", "Misc. (Vis)", "TheWebConf (WWW)", "ISWC", "ESWC", "VOILA", "Misc. (Web/Data)"],
-    TIME_INTERVAL: ["2002", "2021"],
+    JOUR_LIST: ["IJGIS", "CaGIS", "TiGIS", "JOSIS", "IJGI", "IJC", "Carto", "Other GIS", "SpatialCog", "IEEE", "ISPRS"],
+    CONF_LIST: ["ICC", "GIScience", "GeneICA", "SAGEO", "ISPRS", "ISSDQ"],
+    TIME_INTERVAL: ["2006", "2021"],
     SVG_W: 800,
     TITLE_Y: 26,
     CAPTION_X: 40,
-    TRACK_WIDTH: 350,
+    TRACK_WIDTH: 300,
     TRACK_HEIGHT: 18,
     TRACK_X: 110,
     CELL_SIZE: 12,
@@ -16,20 +16,21 @@ const CVIS = {
 
 const LEGENDS = {
     journals: [
-        {type: "HCIGE", desc: "Guest Editor (HCI)"},
-        {type: "HCIER", desc: "Reviewer (HCI)"},
-        {type: "WDGE", desc: "Guest Editor (Web/Data)"},
-        {type: "WDER", desc: "Guest Editorial Board / Reviewer (Web/Data)"},
+        //{type: "JGED1", desc: "Guest Editor"},
+        {type: "JREW1", desc: "Reviewer - 1 paper"},
+        //{type: "JGED2", desc: "Guest Editor"},
+        {type: "JREW2", desc: "Reviewer - 2 papers"},
+        {type: "JREW3", desc: "Reviewer - 3+ papers"},
+        {type: "JGED3", desc: "Guest Editor"},
     ],
     conferences: [
-        {type: "HCIPCC", desc: "Program Committee Chair/Subcommittee Chair (HCI)"},
-        {type: "HCIPCM", desc: "Program Committee Member/Associate Chair (HCI)"},
-        {type: "HCIER", desc: "Reviewer (HCI)"},
-        {type: "WDPCM", desc: "Program Committee Member/Associate Chair (Web/Data)"},
-        {type: "WDER", desc: "Reviewer (Web/Data)"},
+        {type: "CHAIR", desc: "Chair"},
+        {type: "PCM", desc: "PC Member/Associate Chair"},
+        {type: "CREW", desc: "Reviewer"},
     ],
     books: [
-        {type: "WDER", desc: "Reviewer (Web/Data)"},
+        {type: "BED", desc: "Editor"},
+        {type: "BREW", desc: "Reviewer"},
     ],
 };
 
@@ -79,7 +80,7 @@ var _reviewing4x = function(data, venueList, jobList, parentEl, svg_h, heading){
          .attr("transform", "translate(0,60)");
     svgEl.append("g")
          .attr("transform", "translate("+CVIS.TRACK_X+",54)")
-         .call(d3.axisTop(timeScale).tickValues([timeParser("2005"), timeParser("2010"), timeParser("2015"), timeParser("2020")]).tickSizeOuter(0));
+         .call(d3.axisTop(timeScale).tickValues([timeParser("2010"), timeParser("2015"), timeParser("2020")]).tickSizeOuter(0));
 
     venueGs = d3.select("g#"+heading.toLowerCase())
                 .selectAll("g.venues")
@@ -117,8 +118,8 @@ var _reviewing4x = function(data, venueList, jobList, parentEl, svg_h, heading){
 var reviewingVis = function(dataURL){
     d3.json(dataURL).then(
         function(data){
-            _reviewing4x(data.journals, CVIS.JOUR_LIST, LEGENDS.journals, "#revj", 220, "Journals");
-            _reviewing4x(data.conferences, CVIS.CONF_LIST, LEGENDS.conferences, "#revc", 470, "Conferences");
+            _reviewing4x(data.journals, CVIS.JOUR_LIST, LEGENDS.journals, "#revj", 320, "Journals");
+            _reviewing4x(data.conferences, CVIS.CONF_LIST, LEGENDS.conferences, "#revc", 280, "Conferences");
             _reviewing4x(data.books, CVIS.BOOK_LIST, LEGENDS.books, "#revb", 110, "Books");
         }
     ).catch(function(err){console.log(err);});
