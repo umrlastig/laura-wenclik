@@ -7,66 +7,87 @@ tutoriel pour se connecter à une API REST en JavaScript : https://www.taniarasc
 
 [Resume](https://startbootstrap.com/template-overviews/resume/) is a resume and CV theme for [Bootstrap](http://getbootstrap.com/) created by [Start Bootstrap](http://startbootstrap.com/). This theme features a fixed sidebar with content sections to build a simple, yet elegant resume.
 
-## Preview
+# How to use this template to create your homepage
+This repository contains a template for the homepage of the LASTIG researchers. You can find below a tutorial to create your homepage using this template.
 
-[![Resume Preview](https://startbootstrap.com/assets/img/screenshots/themes/resume.png)](https://blackrockdigital.github.io/startbootstrap-resume/)
+## Create a Github account and get invited in UMR LASTIG organization
+The first step is to create an account on Github and to become a member of the [UMR LASTIG organization on Github](https://github.com/umrlastig/).
+The website architecture is described in the image below. Github repositories are contained in the [UMR LASTIG organization](https://github.com/umrlastig/). There is one repository for the [homepage of the lab](https://github.com/umrlastig/website), one repository for the homepage of each of the four research teams (e.g. [GEOVIS team repository](https://github.com/umrlastig/geovis)), and one repository for each member of the LASTIG to host his/her homepage (e.g. [Guillaume Touya's homepage repository](https://github.com/umrlastig/gtouya_homepage)). The architecture of the website was designed this way for a simple management of administration rights: as each researcher creates his/her own repository to host his/her homepage, each researcher is the administrator of the homepage, and has the responsibility to keep it up-to-date.
 
-**[View Live Preview](https://blackrockdigital.github.io/startbootstrap-resume/)**
+![LASTIG website architecture](img/website_architecture.png)
 
-## Status
+A template to build a homepage is provided in the [researcher_homepage repository](https://github.com/umrlastig/researcher_homepage). The following sections of this tutorial explain how to use this template.
 
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/BlackrockDigital/startbootstrap-resume/master/LICENSE)
-[![npm version](https://img.shields.io/npm/v/startbootstrap-resume.svg)](https://www.npmjs.com/package/startbootstrap-resume)
-[![Build Status](https://travis-ci.org/BlackrockDigital/startbootstrap-resume.svg?branch=master)](https://travis-ci.org/BlackrockDigital/startbootstrap-resume)
-[![dependencies Status](https://david-dm.org/BlackrockDigital/startbootstrap-resume/status.svg)](https://david-dm.org/BlackrockDigital/startbootstrap-resume)
-[![devDependencies Status](https://david-dm.org/BlackrockDigital/startbootstrap-resume/dev-status.svg)](https://david-dm.org/BlackrockDigital/startbootstrap-resume?type=dev)
+To get invited in this LASTIG organization, please contact one of the administrators of the organization (for instance your research team leader) with the login of your Github account.
 
-## Download and Installation
+## Create your homepage repository
+Once you are a member of the [UMR LASTIG organization](https://github.com/umrlastig/), you can create a new repository on the Github website by clicking on the green up-right button "New". Then, you have to give information on your repository (see the example in the image below). Please select a "Public" repository, it will help for the management of the website.
 
-To begin using this template, choose one of the following options to get started:
-* [Download the latest release on Start Bootstrap](https://startbootstrap.com/template-overviews/resume/)
-* Install via npm: `npm i startbootstrap-resume`
-* Clone the repo: `git clone https://github.com/BlackrockDigital/startbootstrap-resume.git`
-* [Fork, Clone, or Download on GitHub](https://github.com/BlackrockDigital/startbootstrap-resume)
+![Create a new repository](img/new_repo.png)
 
-## Usage
+Once the repository is created navigate to the webpage of the repository. The website will be hosted here thanks to the [Github pages technology](https://pages.github.com/). To have a website hosted here and generated from the files in the repository, you have to create a branch of the repository called "gh-pages". So, click on the button "Branch:master" (see image below), type "gh-pages", and then click below on "Create branch: gh-pages".
 
-### Basic Usage
+![Create a new repository](img/branch_ghpages.png)
 
-After downloading, simply edit the HTML and CSS files included with the template in your favorite text editor to make changes. These are the only files you need to worry about, you can ignore everything else! To preview the changes you make to the code, you can open the `index.html` file in your web browser.
+Then, Github should switch to this new gh-pages branch, to contains only the license and the readme files from the master branch. Arrived here, you already have your homepage at the following address "https://umrlastig.github.io/name_of_your_repo". For now, the homepage is quite empty and only displays the content of the readme.md file.
 
-### Advanced Usage
+## Clone the repository on your computer
+From now on, most of the work to create your homepage will be done from your desktop computer and not online on the Github website anymore. So, you need to clone your repository on your computer. You have two options to clone the repository with a git terminal, or with the [Github Desktop application](https://desktop.github.com/).
 
-After installation, run `npm install` and then run `npm start` which will open up a preview of the template in your default browser, watch for changes to core template files, and live reload the browser when changes are saved. You can view the `gulpfile.js` to see which tasks are included with the dev environment.
+### Clone with Git terminal
 
-#### Gulp Tasks
+* In the repository Github page, click "Clone or download" green button on the right.
 
-- `gulp` the default task that builds everything
-- `gulp watch` browserSync opens the project in your default browser and live reloads when changes are made
-- `gulp css` compiles SCSS files into CSS and minifies the compiled CSS
-- `gulp js` minifies the themes JS file
-- `gulp vendor` copies dependencies from node_modules to the vendor directory
+* In the popup that opens, copy the URL of the repository (see image below).
 
-You must have npm and Gulp installed globally on your machine in order to use these features.
+![Clone the repository](img/clone_repo.png)
 
-## Bugs and Issues
+* Open a Bash or a Terminal.
 
-Have a bug or an issue with this template? [Open a new issue](https://github.com/BlackrockDigital/startbootstrap-resume/issues) here on GitHub or leave a comment on the [template overview page at Start Bootstrap](http://startbootstrap.com/template-overviews/resume/).
+* Change the current working directory to the location where you want the cloned directory to be made.
 
-## About
+* Type git clone, and then paste the URL you copied just before
 
-Start Bootstrap is an open source library of free Bootstrap templates and themes. All of the free templates and themes on Start Bootstrap are released under the MIT license, which means you can use them for any purpose, even for commercial projects.
+> $ git clone https://github.com/umrlastig/your_repo_name.git
 
-* https://startbootstrap.com
-* https://twitter.com/SBootstrap
+* Press Enter. Your local clone of the repository will be created.
 
-Start Bootstrap was created by and is maintained by **[David Miller](http://davidmiller.io/)**, Owner of [Blackrock Digital](http://blackrockdigital.io/).
+* Then, switch to the "gh-pages" branch you create earlier:
 
-* http://davidmiller.io
-* https://twitter.com/davidmillerskt
-* https://github.com/davidtmiller
+> $ git checkout gh-pages
 
-Start Bootstrap is based on the [Bootstrap](http://getbootstrap.com/) framework created by [Mark Otto](https://twitter.com/mdo) and [Jacob Thorton](https://twitter.com/fat).
+### Clone with Github Desktop
+
+* Install the Github Desktop application
+
+* In the repository Github page, click "Clone or download" green button on the right.
+
+* In the popup that opens (see image above), click on the "Open in Desktop" button. See this [Github tutorial](https://help.github.com/en/desktop/guides/contributing-to-projects/cloning-a-repository-from-github-to-github-desktop/) for more information.
+
+* Then, switch to the "gh-pages" branch you create earlier:
+
+![Switch the branch in Desktop](img/switch_branch.png)
+
+## Copy the template into your repository
+
+Arrived here, you have the files of the repository branch gh-pages in a folder called "your_repo_name" (e.g. "qttruong_homepage" in the tutorial images). You can check the folder on your computer, it should contain two files (LICENSE, and README.md). Now we are going to copy the template homepage into this folder.
+
+The easiest way to do this is the following:
+* Go to the [template repository](https://github.com/umrlastig/researcher_homepage/tree/gh-pages).
+
+* Click on the "Clone or download" green button and then click on "Download ZIP" (see image below).
+
+![Download zip file](img/download_zip.png)
+
+* Download the .zip file somewhere on your computer. Then, unzip it somewhere and copy all the files directly into your repository local folder. You should have the files displayed in the image below copied in your local folder.
+
+![Download zip file](img/local_files.png)
+
+Now, your website is ready but only in your local folder. You need to commit and push it to Github to have it available on the web. You can do both either with the Git shell or with Github desktop. Don't forget to push your new files to your remote Github repo after you commit them.
+
+After the Push, if you look at the address of your homepage ("https://umrlastig.github.io/name_of_your_repo"), you should now see the template homepage rather than the README.md file. You are now ready to modify the template with your own information.
+
+## Fill the template with your personal information
 
 ## Copyright and License
 
