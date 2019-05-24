@@ -30,7 +30,7 @@
 
 </head>
 
-<body id="page-top" onload="reviewingVis('reviewing.json'); getAllPublicationsAuthor('guillaume-touya');">
+<body id="page-top" onload="reviewingVis('reviewing.json'); getJournalPublicationsAuthor('guillaume-touya');">
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
     <a class="navbar-brand js-scroll-trigger" href="#page-top">
@@ -444,61 +444,26 @@
       <div class="w-100">
         <h2 class="mb-5">Publications</h2>
 
-        <div class="subheading mb-3">Programming Languages &amp; Tools</div>
-        <ul class="list-inline dev-icons">
-          <li class="list-inline-item">
-            <i class="fab fa-html5"></i>
-          </li>
-          <li class="list-inline-item">
-            <i class="fab fa-css3-alt"></i>
-          </li>
-          <li class="list-inline-item">
-            <i class="fab fa-js-square"></i>
-          </li>
-          <li class="list-inline-item">
-            <i class="fab fa-angular"></i>
-          </li>
-          <li class="list-inline-item">
-            <i class="fab fa-react"></i>
-          </li>
-          <li class="list-inline-item">
-            <i class="fab fa-node-js"></i>
-          </li>
-          <li class="list-inline-item">
-            <i class="fab fa-sass"></i>
-          </li>
-          <li class="list-inline-item">
-            <i class="fab fa-less"></i>
-          </li>
-          <li class="list-inline-item">
-            <i class="fab fa-wordpress"></i>
-          </li>
-          <li class="list-inline-item">
-            <i class="fab fa-gulp"></i>
-          </li>
-          <li class="list-inline-item">
-            <i class="fab fa-grunt"></i>
-          </li>
-          <li class="list-inline-item">
-            <i class="fab fa-npm"></i>
-          </li>
-        </ul>
+        <div class="subheading mb-3 mt-3">Journals</div>
+        <ol id="pubJ" class="sub">
+        </ol>
 
-        <div class="subheading mb-3">Workflow</div>
-        <ul class="fa-ul mb-0">
-          <li>
-            <i class="fa-li fa fa-check"></i>
-            Mobile-First, Responsive Design</li>
-          <li>
-            <i class="fa-li fa fa-check"></i>
-            Cross Browser Testing &amp; Debugging</li>
-          <li>
-            <i class="fa-li fa fa-check"></i>
-            Cross Functional Teams</li>
-          <li>
-            <i class="fa-li fa fa-check"></i>
-            Agile Development &amp; Scrum</li>
-        </ul>
+        <div class="subheading mb-3 mt-3">Conferences</div>
+        <ol id="pubC" class="sub">
+        </ol>
+
+        <div class="subheading mb-3 mt-3">Books and Chapters</div>
+        <ol id="pubB" class="sub">
+        </ol>
+
+        <div class="subheading mb-3 mt-3">Workshops and Posters</div>
+        <ol id="pubW" class="sub">
+        </ol>
+
+        <div class="subheading mb-3 mt-3">Other Publications (Technical Reports, Dissertations, Dissemination)</div>
+        <ol id="pubO" class="sub">
+        </ol>
+
       </div>
     </section>
 
