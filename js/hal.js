@@ -26,7 +26,7 @@ var getAllPublicationsAuthor = function(halId){
   var request = new XMLHttpRequest();
 
   // Open a new connection, using the GET request on the URL endpoint
-  var url = "https://api.archives-ouvertes.fr/search/?q=authIdHal_s:%22"+halId+"%22&wt=json&fl=citationFull_s";
+  var url = "https://api.archives-ouvertes.fr/search/?q=authIdHal_s:%22"+halId+"%22&wt=json&fl=citationFull_s,docType_s&sort=producedDateY_i desc";
   request.open('GET', url, true);
   console.log(url);
   console.log(request.status);
@@ -69,43 +69,155 @@ var getJournalPublicationsAuthor = function(halId){
     //console.log(data.response.docs);
     data.response.docs.forEach(docs => {
       // first create the list element with the citation
-      const listElement = document.createElement('li');
-      listElement.innerHTML = docs.citationFull_s
-      const appendChildElement = parentJ.appendChild(listElement);
-
-      // then create the "pubLink" div that contains the links related to the publication
-      pubLinkElement = document.createElement('div');
-      pubLinkElement.setAttribute("class","pubLink");
-      listElement.appendChild(pubLinkElement);
-      // create a span element inside the new div
-      spanElement = document.createElement('span');
-      spanElement.setAttribute("class","bibtex");
-      pubLinkElement.appendChild(spanElement);
-      // create an input element inside the span
-      inputElement = document.createElement('input');
-      inputElement.setAttribute("type","image");
-      inputElement.setAttribute("src","img/icons/bibtex.png");
-      inputElement.setAttribute("alt","BibTeX entry for this article");
-      inputElement.setAttribute("title","BibTeX entry for this article");
-      inputElement.setAttribute("onclick","window.open('bib/lobo_et_al_19.html','BibTex','width=800,height=200,top=100,left=100,scrollbars=yes,resizable=yes');");
-      spanElement.appendChild(inputElement);
-      // create an a element with the url to hal
-      aHALElement = document.createElement('a');
-      aHALElement.setAttribute("href",docs.halId_s);
-      aHALElement.setAttribute("class","imgLink");
-      imgElement = document.createElement('img');
-      imgElement.setAttribute("title","HAL");
-      imgElement.setAttribute("src","img/icons/hal.png");
-      imgElement.setAttribute("height","20");
-      imgElement.setAttribute("alt","HAL");
-      aHALElement.appendChild(imgElement);
-      pubLinkElement.appendChild(aHALElement);
+      createPubHTML(docs, parentJ);
     })
   };
 
   request.send();
 }
 
+
+var getConfPublicationsAuthor = function(halId){
+  // Create a request variable and assign a new XMLHttpRequest object to it.
+  var request = new XMLHttpRequest();
+
+  // Open a new connection, using the GET request on the URL endpoint
+  var url = "https://api.archives-ouvertes.fr/search/?q=authIdHal_s:%22"+halId
+    +"%22&wt=json&fl=citationFull_s&fq=docType_s:\"COMM\"&fl=producedDateY_i,halId_s&sort=producedDateY_i desc";
+  request.open('GET', url, true);
+  //console.log(url);
+
+  var parentC = document.getElementById("pubC");
+
+  request.onload = function () {
+    // Begin accessing JSON data here
+    var data = JSON.parse(this.response);
+    //console.log(data.response);
+    //console.log(data.response.docs);
+    data.response.docs.forEach(docs => {
+      // first create the list element with the citation
+      createPubHTML(docs, parentC);
+    })
+  };
+
+  request.send();
+}
+
+var getBookPublicationsAuthor = function(halId){
+  // Create a request variable and assign a new XMLHttpRequest object to it.
+  var request = new XMLHttpRequest();
+
+  // Open a new connection, using the GET request on the URL endpoint
+  var url = "https://api.archives-ouvertes.fr/search/?q=authIdHal_s:%22"+halId
+    +"%22&wt=json&fl=citationFull_s&fq=docType_s:\"COUV\"&fl=producedDateY_i,halId_s&sort=producedDateY_i desc";
+  request.open('GET', url, true);
+  //console.log(url);
+
+  var parentB = document.getElementById("pubB");
+
+  request.onload = function () {
+    // Begin accessing JSON data here
+    var data = JSON.parse(this.response);
+    //console.log(data.response);
+    //console.log(data.response.docs);
+    data.response.docs.forEach(docs => {
+      // first create the list element with the citation
+      createPubHTML(docs, parentB);
+    })
+  };
+
+  request.send();
+}
+
+
+var getWorkshopPublicationsAuthor = function(halId){
+  // Create a request variable and assign a new XMLHttpRequest object to it.
+  var request = new XMLHttpRequest();
+
+  // Open a new connection, using the GET request on the URL endpoint
+  var url = "https://api.archives-ouvertes.fr/search/?q=authIdHal_s:%22"+halId
+    +"%22&wt=json&fl=citationFull_s&fq=docType_s:\"POSTER\"&fl=producedDateY_i,halId_s,docType_s&sort=producedDateY_i desc";
+  request.open('GET', url, true);
+  //console.log(url);
+
+  var parentB = document.getElementById("pubW");
+
+  request.onload = function () {
+    // Begin accessing JSON data here
+    var data = JSON.parse(this.response);
+    //console.log(data.response);
+    //console.log(data.response.docs);
+    data.response.docs.forEach(docs => {
+      // first create the list element with the citation
+      createPubHTML(docs, parentB);
+    })
+  };
+
+  request.send();
+}
+
+
+var getOtherPublicationsAuthor = function(halId){
+  // Create a request variable and assign a new XMLHttpRequest object to it.
+  var request = new XMLHttpRequest();
+
+  // Open a new connection, using the GET request on the URL endpoint
+  var url = "https://api.archives-ouvertes.fr/search/?q=authIdHal_s:%22"+halId
+    +"%22&wt=json&fl=citationFull_s&fq=docType_s:(\"REPORT\" OR \"THESE\" OR \"HDR\")&fl=producedDateY_i,halId_s,docType_s&sort=producedDateY_i desc";
+  request.open('GET', url, true);
+  //console.log(url);
+
+  var parentO = document.getElementById("pubO");
+
+  request.onload = function () {
+    // Begin accessing JSON data here
+    var data = JSON.parse(this.response);
+    //console.log(data.response);
+    //console.log(data.response.docs);
+    data.response.docs.forEach(docs => {
+      // first create the list element with the citation
+      createPubHTML(docs, parentO);
+    })
+  };
+
+  request.send();
+}
+
+
+var createPubHTML = function(docs, parent){
+  const listElement = document.createElement('li');
+  listElement.innerHTML = docs.citationFull_s
+  const appendChildElement = parent.appendChild(listElement);
+
+  // then create the "pubLink" div that contains the links related to the publication
+  pubLinkElement = document.createElement('div');
+  pubLinkElement.setAttribute("class","pubLink");
+  listElement.appendChild(pubLinkElement);
+  // create a span element inside the new div
+  spanElement = document.createElement('span');
+  spanElement.setAttribute("class","bibtex");
+  pubLinkElement.appendChild(spanElement);
+  // create an input element inside the span
+  inputElement = document.createElement('input');
+  inputElement.setAttribute("type","image");
+  inputElement.setAttribute("src","img/icons/bibtex.png");
+  inputElement.setAttribute("alt","BibTeX entry for this article");
+  inputElement.setAttribute("title","BibTeX entry for this article");
+  bibtexURL = "https://hal.archives-ouvertes.fr/"+docs.halId_s+"/bibtex";
+  inputElement.setAttribute("onclick","window.open('"+bibtexURL+"','BibTex','width=800,height=200,top=100,left=100,scrollbars=yes,resizable=yes');");
+  spanElement.appendChild(inputElement);
+  // create an a element with the url to hal
+  aHALElement = document.createElement('a');
+  aHALElement.setAttribute("href",docs.halId_s);
+  aHALElement.setAttribute("class","imgLink");
+  imgElement = document.createElement('img');
+  imgElement.setAttribute("title","HAL");
+  imgElement.setAttribute("src","img/icons/hal.png");
+  imgElement.setAttribute("height","20");
+  imgElement.setAttribute("alt","HAL");
+  aHALElement.appendChild(imgElement);
+  pubLinkElement.appendChild(aHALElement);
+}
 
 var sort_by = function(field, reverse, primer){
    var key = function (x) {return primer ? primer(x[field]) : x[field]};
