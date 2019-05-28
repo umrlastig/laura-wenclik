@@ -1,11 +1,4 @@
-# [Start Bootstrap - Resume](https://startbootstrap.com/template-overviews/resume/)
-
-modèle de requête REST pour récupérer les publications HAL d'un chercheur : https://api.archives-ouvertes.fr/search/?q=authIdHal_s:%22guillaume-touya%22&wt=json
-La même requête mais qui renvoie la citation de chaque dépôt : https://api.archives-ouvertes.fr/search/?q=authIdHal_s:%22guillaume-touya%22&wt=json&fl=citationFull_s
-Lien vers tous les champs disponibles dans HAL : https://api.archives-ouvertes.fr/docs/search/?schema=fields#fields
-tutoriel pour se connecter à une API REST en JavaScript : https://www.taniarascia.com/how-to-connect-to-an-api-with-javascript/
-
-[Resume](https://startbootstrap.com/template-overviews/resume/) is a resume and CV theme for [Bootstrap](http://getbootstrap.com/) created by [Start Bootstrap](http://startbootstrap.com/). This theme features a fixed sidebar with content sections to build a simple, yet elegant resume.
+# Readme for researcher_homepage
 
 # How to use this template to create your homepage
 This repository contains a template for the homepage of the LASTIG researchers. You can find below a tutorial to create your homepage using this template.
@@ -88,6 +81,27 @@ Now, your website is ready but only in your local folder. You need to commit and
 After the Push, if you look at the address of your homepage ("https://umrlastig.github.io/name_of_your_repo"), you should now see the template homepage rather than the README.md file. You are now ready to modify the template with your own information.
 
 ## Fill the template with your personal information
+
+
+> Please note that not all sections of this template apply to all researchers, so feel free to remove the ones that don't apply to you and to add sections that were not provided in the template. It is up to each LASTIG researcher to improve his/her homepage as he/she wishes.
+
+### General guidelines with Bootstrap framework
+
+### Publications
+
+The "Publications" section is generated from the HAL repository of each researcher, using the hal.js library. To have your publications displayed inside your homepage you have to:
+
+1. Fill your HAL repository with all your publications.
+2. Edit the HAL-id used when the page is loaded: in the index.html, modify the line below by changing 'guillaume-touya' to your own HAL-id.
+
+> <body id="page-top" onload="reviewingVis('reviewing.json'); getJournalPublicationsAuthor('guillaume-touya');getConfPublicationsAuthor('guillaume-touya');getBookPublicationsAuthor('guillaume-touya');getOtherPublicationsAuthor('guillaume-touya');"\>
+
+3. If you want to change the style or the categories, please feel free to edit your copy of the hal.js library.
+
+### Reviewing
+For those who have reviewing activities, this template proposes a d3.js based visualization of reviewing activities.
+
+### Languages
 
 ## Copyright and License
 

@@ -20,6 +20,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+// documentation on HAL API: https://api.archives-ouvertes.fr/docs/search/?schema=fields#fields
+
 
 var getAllPublicationsAuthor = function(halId){
   // Create a request variable and assign a new XMLHttpRequest object to it.
