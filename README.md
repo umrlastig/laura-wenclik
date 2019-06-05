@@ -82,10 +82,30 @@ After the Push, if you look at the address of your homepage ("https://umrlastig.
 
 ## Fill the template with your personal information
 
+This part of the tutorial explains how to modify the template with your own information.
 
 > Please note that not all sections of this template apply to all researchers, so feel free to remove the ones that don't apply to you and to add sections that were not provided in the template. It is up to each LASTIG researcher to improve his/her homepage as he/she wishes.
 
 ### General guidelines with Bootstrap framework
+
+This homepage is built with the Bootstrap framework, a simple framework for responsive webpages that works with HTML, CSS and JavaScript. There are plenty of tutorials on Bootrap on the web, for [instance](https://websitesetup.org/bootstrap-tutorial-for-beginners/).
+
+To update the content of the template, you just have to edit the html file **index.html**. For instance, to change the name that appears on top of the homepage, edit the html line below:
+
+>     <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="about">
+      <div class="w-100">
+        <h1 class="mb-0">Guillaume
+          <span class="text-primary">Touya</span>
+        </h1>
+        ...
+
+To change the style of the template, you have to edit the css file **resume.css** located in the *css* folder, and overwrite the properties of the webpage you want to change. For instance, to change the primary text color, i.e. the one used for your lastname, you have to change the color code in the code below:
+
+> .text-primary {
+  color: #94c01a !important;
+}
+
+Only some advanced modification of the template requires the edition of the main Javascript file of the template, *js/resume.js*.
 
 ### Publications
 
@@ -101,8 +121,37 @@ The "Publications" section is generated from the HAL repository of each research
 ### Reviewing
 For those who have reviewing activities, this template proposes a d3.js based visualization of reviewing activities.
 
+The content of the visualization, i.e. your reviewing activities, is stored in json file named **reviewing.json**. There are three categories of reviewing activities: *journals*, *conferences*, and *books*.
+
+> "books": [
+    {"name": "Books", "role": "Reviewer", "year": 2013, "type": "BREW", "description": "Abstracting geographic information in a data rich world: methodologies and applications of map generalisation", "url": "https://www.springer.com/us/book/9783319002026"},
+    {"name": "Books", "role": "Reviewer", "year": 2014, "type": "BREW", "description": "OpenStreetMap in GIScience: experiences, research, and applications", "url": "https://www.springer.com/gp/book/9783319142791"},
+    {"name": "Books", "role": "Reviewer", "year": 2015, "type": "BREW", "description": "European Handbook of Crowdsourced Geographic Information", "url": "https://www.ubiquitypress.com/site/books/10.5334/bax/"}
+],
+
+>  "journals": [
+   {"name": "TiGIS", "role": "Reviewer", "year": 2011, "type": "JREW1", "description": "Transactions in GIS", "url": "https://onlinelibrary.wiley.com/journal/14679671"},
+   {"name": "IJGI", "role": "Reviewer", "year": 2012, "type": "JREW1", "description": "ISPRS International Journal of Geo-Information", "url": "https://www.mdpi.com/journal/ijgi"},
+   {"name": "IJGI", "role": "Reviewer", "year": 2013, "type": "JREW1", "description": "ISPRS International Journal of Geo-Information", "url": "https://www.mdpi.com/journal/ijgi"},
+],
+
+>  "conferences": [
+     {"name": "GeneICA", "role": "Reviewer", "year": 2011, "type": "CREW", "description": "14th ICA Workshop on Generalisation and Multiple Representation", "url": "https://generalisation.icaci.org/prevevents/72-workshop-2011-general-information.html"},
+     {"name": "GeneICA", "role": "Reviewer", "year": 2012, "type": "CREW", "description": "15th ICA Workshop on Generalisation and Multiple Representation", "url": "https://generalisation.icaci.org/prevevents/60-workshop-2012-general-info.html"},
+     {"name": "GeneICA", "role": "Reviewer", "year": 2013, "type": "CREW", "description": "16th ICA Workshop on Generalisation and Multiple Representation", "url": "https://generalisation.icaci.org/prevevents/43-workshop2013general.html"},
+  ],      
+
 ### Languages
+The homepage is available in two languages for now, French and English. You just have to use the checkbox to switch the language. The language switch works with the html classes "lang-en" and "lang-fr": when the language is English, the html components with the class "lang-fr" are hidden and when the language is set to French, the components with class "lang-en" are hidden. So, you just have to double each text component in the index.html to allow different languages. For instance, this piece of code below adds a navigation bar entry displayed "About" in English and "Présentation" in French
+
+>     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger lang-en" href="#about">About</a>
+          <a class="nav-link js-scroll-trigger lang-fr" href="#about">Présentation</a>
+        </li>
 
 ## Copyright and License
 
+This template was inspired from the "Resume" Bootstrap template:
 Copyright 2013-2019 Blackrock Digital LLC. Code released under the [MIT](https://github.com/BlackrockDigital/startbootstrap-resume/blob/gh-pages/LICENSE) license.
