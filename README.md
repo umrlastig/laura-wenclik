@@ -118,10 +118,29 @@ The "Publications" section is generated from the HAL repository of each research
 
 3. If you want to change the style or the categories, please feel free to edit your copy of the hal.js library.
 
+### Experience section
+
+The *Experience* section is proposed in two ways in the template, a simple list presentation similar to the *Education* section, and a vertical timeline. You have to keep the one you prefer and remove the other from the *index.html* file. Be careful to keep the consistency between the **id** of the section and the one referenced in the navigation bar (see code below that refers to the timeline):
+
+>         <li class="nav-item">
+          <a class="nav-link js-scroll-trigger lang-en" href="#timeline">Experience</a>
+          <a class="nav-link js-scroll-trigger lang-fr" href="#timeline">Parcours professionnel</a>
+        </li>
+
 ### Reviewing
 For those who have reviewing activities, this template proposes a d3.js based visualization of reviewing activities.
 
 The content of the visualization, i.e. your reviewing activities, is stored in json file named **reviewing.json**. There are three categories of reviewing activities: *journals*, *conferences*, and *books*.
+
+Regarding the reviewing activities in *books*, the metadata to fill in the json files are the following:
+- *name*, i.e. the text that appears on the left of the line in the visualization, the default value is "Books" for each instance.
+- *role*, which can be either "Reviewer" or "Editor".
+- *year*, the year of the reviewing activity, which may be different from the publication year of the book.
+- *type* that encodes the role, "BREW" for Reviewer, and "BED" for Editor
+- *description*, i.e. the name of the book ("Abstracting geographic information in a data rich world: methodologies and applications of map generalisation" in the first example below).
+- *url*, the URL of the published book that is used when clicking on the square.
+
+In the example below, there is only one book per year, so everything is put in the same "Books" line, but different lines can be used to cover several books reviewed in the same years.
 
 > "books": [
     {"name": "Books", "role": "Reviewer", "year": 2013, "type": "BREW", "description": "Abstracting geographic information in a data rich world: methodologies and applications of map generalisation", "url": "https://www.springer.com/us/book/9783319002026"},
@@ -129,11 +148,28 @@ The content of the visualization, i.e. your reviewing activities, is stored in j
     {"name": "Books", "role": "Reviewer", "year": 2015, "type": "BREW", "description": "European Handbook of Crowdsourced Geographic Information", "url": "https://www.ubiquitypress.com/site/books/10.5334/bax/"}
 ],
 
+Regarding the reviewing activities in *journals*, the metadata to fill in the json files are the following:
+- *name*, i.e. the text that appears on the left of the line in the visualization, which is the short name of the journal or a short name that gathers several journals (for instance "Other GIS" below gathers reviewing activities in several journals where the activities are not regular enough to deserve a full line).
+- *role*, which can be either "Reviewer" or "Guest Editor".
+- *year*, the year of the reviewing activity, which may be different from the publication year of the article (if it is published).
+- *type* that encodes the role and the amount of papers reviewed, "JREW1" for Reviewer of 1 paper that year,  "JREW2" for Reviewer of 2 papers that year,  "JREW3" for Reviewer of 3 or more papers that year, and "JGED3" for Guest Editor. Other possible options can be added here, but it will require a modification of the **reviewing.js** file.
+- *description*, i.e. the full name of the journal ("Transactions in GIS" in the first example below, for the "TiGIS" name).
+- *url*, the URL of the journal, not of the reviewed papers.
+
 >  "journals": [
    {"name": "TiGIS", "role": "Reviewer", "year": 2011, "type": "JREW1", "description": "Transactions in GIS", "url": "https://onlinelibrary.wiley.com/journal/14679671"},
    {"name": "IJGI", "role": "Reviewer", "year": 2012, "type": "JREW1", "description": "ISPRS International Journal of Geo-Information", "url": "https://www.mdpi.com/journal/ijgi"},
    {"name": "IJGI", "role": "Reviewer", "year": 2013, "type": "JREW1", "description": "ISPRS International Journal of Geo-Information", "url": "https://www.mdpi.com/journal/ijgi"},
+   {"name": "Other GIS", "role": "Reviewer", "year": 2017, "type": "JREW1", "description": "Other journals in GIS", "url": ""},
 ],
+
+Regarding the reviewing activities in *conferences*, the metadata to fill in the json files are the following:
+- *name*, i.e. the text that appears on the left of the line in the visualization, which is the short name of the conference series (for instance "GeneICA" below stands for the reviewing activities in the ICA Workshops on Generalisation and Multiple Representation).
+- *role*, which can be either "Reviewer", "PC Member/Associate Chair", or "Chair".
+- *year*, the year of the reviewing activity, which may be different from the  year of the conference.
+- *type* that encodes the role, "CHAIR" for chair of the conference,  "JREW2" for Reviewer of 2 papers that year,  "PCM" for program committee member, and "CREW" for simple reviewer. Other possible options can be added here, but it will require a modification of the **reviewing.js** file.
+- *description*, i.e. the full name of the conference.
+- *url*, the URL of the conference, not of the reviewed papers.
 
 >  "conferences": [
      {"name": "GeneICA", "role": "Reviewer", "year": 2011, "type": "CREW", "description": "14th ICA Workshop on Generalisation and Multiple Representation", "url": "https://generalisation.icaci.org/prevevents/72-workshop-2011-general-information.html"},

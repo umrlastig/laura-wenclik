@@ -58,7 +58,7 @@ var getJournalPublicationsAuthor = function(halId){
 
   // Open a new connection, using the GET request on the URL endpoint
   var url = "https://api.archives-ouvertes.fr/search/?q=authIdHal_s:%22"+halId
-    +"%22&wt=json&fl=citationFull_s&fq=docType_s:\"ART\"&fl=producedDateY_i,halId_s&sort=producedDateY_i desc";
+    +"%22&wt=json&fl=citationFull_s&fq=docType_s:\"ART\"&fl=producedDateY_i,halId_s,fileMain_s&sort=producedDateY_i desc";
   request.open('GET', url, true);
   //console.log(url);
 
@@ -85,7 +85,7 @@ var getConfPublicationsAuthor = function(halId){
 
   // Open a new connection, using the GET request on the URL endpoint
   var url = "https://api.archives-ouvertes.fr/search/?q=authIdHal_s:%22"+halId
-    +"%22&wt=json&fl=citationFull_s&fq=docType_s:\"COMM\"&fl=producedDateY_i,halId_s&sort=producedDateY_i desc";
+    +"%22&wt=json&fl=citationFull_s&fq=docType_s:\"COMM\"&fq=invitedCommunication_s:\"0\"&fl=producedDateY_i,halId_s,fileMain_s&sort=producedDateY_i desc";
   request.open('GET', url, true);
   //console.log(url);
 
@@ -111,7 +111,7 @@ var getBookPublicationsAuthor = function(halId){
 
   // Open a new connection, using the GET request on the URL endpoint
   var url = "https://api.archives-ouvertes.fr/search/?q=authIdHal_s:%22"+halId
-    +"%22&wt=json&fl=citationFull_s&fq=docType_s:\"COUV\"&fl=producedDateY_i,halId_s&sort=producedDateY_i desc";
+    +"%22&wt=json&fl=citationFull_s&fq=docType_s:\"COUV\"&fl=producedDateY_i,halId_s,fileMain_s&sort=producedDateY_i desc";
   request.open('GET', url, true);
   //console.log(url);
 
@@ -138,7 +138,7 @@ var getWorkshopPublicationsAuthor = function(halId){
 
   // Open a new connection, using the GET request on the URL endpoint
   var url = "https://api.archives-ouvertes.fr/search/?q=authIdHal_s:%22"+halId
-    +"%22&wt=json&fl=citationFull_s&fq=docType_s:\"POSTER\"&fl=producedDateY_i,halId_s,docType_s&sort=producedDateY_i desc";
+    +"%22&wt=json&fl=citationFull_s&fq=docType_s:\"POSTER\"&fl=producedDateY_i,halId_s,docType_s,fileMain_s&sort=producedDateY_i desc";
   request.open('GET', url, true);
   //console.log(url);
 
@@ -165,7 +165,7 @@ var getOtherPublicationsAuthor = function(halId){
 
   // Open a new connection, using the GET request on the URL endpoint
   var url = "https://api.archives-ouvertes.fr/search/?q=authIdHal_s:%22"+halId
-    +"%22&wt=json&fl=citationFull_s&fq=docType_s:(\"REPORT\" OR \"THESE\" OR \"HDR\")&fl=producedDateY_i,halId_s,docType_s&sort=producedDateY_i desc";
+    +"%22&wt=json&fl=citationFull_s&fq=docType_s:(\"REPORT\" OR \"THESE\" OR \"HDR\")&fl=producedDateY_i,halId_s,docType_s,fileMain_s&sort=producedDateY_i desc";
   request.open('GET', url, true);
   //console.log(url);
 
@@ -184,6 +184,34 @@ var getOtherPublicationsAuthor = function(halId){
 
   request.send();
 }
+
+
+var getInvitedTalksAuthor = function(halId){
+  // Create a request variable and assign a new XMLHttpRequest object to it.
+  var request = new XMLHttpRequest();
+
+  // Open a new connection, using the GET request on the URL endpoint
+  var url = "https://api.archives-ouvertes.fr/search/?q=authIdHal_s:%22"+halId
+    +"%22&wt=json&fl=citationFull_s&fq=invitedCommunication_s:1&fl=producedDateY_i,halId_s,docType_s,fileMain_s&sort=producedDateY_i desc";
+  request.open('GET', url, true);
+  console.log(url);
+
+  var parentO = document.getElementById("talks");
+
+  request.onload = function () {
+    // Begin accessing JSON data here
+    var data = JSON.parse(this.response);
+    //console.log(data.response);
+    //console.log(data.response.docs);
+    data.response.docs.forEach(docs => {
+      // first create the list element with the citation
+      createPubHTML(docs, parentO);
+    })
+  };
+
+  request.send();
+}
+
 
 
 var createPubHTML = function(docs, parent){
@@ -219,6 +247,17 @@ var createPubHTML = function(docs, parent){
   imgElement.setAttribute("alt","HAL");
   aHALElement.appendChild(imgElement);
   pubLinkElement.appendChild(aHALElement);
+  // create an a element with the url of the pdf
+  pdfElement = document.createElement('a');
+  pdfElement.setAttribute("href",docs.fileMain_s);
+  pdfElement.setAttribute("class","imgLink");
+  imgPdfElement = document.createElement('img');
+  imgPdfElement.setAttribute("title","pdf");
+  imgPdfElement.setAttribute("src","img/icons/pdf_icon.gif");
+  imgPdfElement.setAttribute("height","20");
+  imgPdfElement.setAttribute("alt","pdf");
+  pdfElement.appendChild(imgPdfElement);
+  pubLinkElement.appendChild(pdfElement);
 }
 
 var sort_by = function(field, reverse, primer){
