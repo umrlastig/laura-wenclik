@@ -14,7 +14,7 @@ A template to build a homepage is provided in the [researcher_homepage repositor
 To get invited in this LASTIG organization, please contact one of the administrators of the organization (for instance your research team leader) with the login of your Github account.
 
 ## Create your homepage repository
-Once you are a member of the [UMR LASTIG organization](https://github.com/umrlastig/), you can create a new repository on the Github website by clicking on the green up-right button "New". Then, you have to give information on your repository (see the example in the image below). Please select a "Public" repository, it will help for the management of the website.
+Once you are a member of the [UMR LASTIG organization](https://github.com/umrlastig/), you can create a new repository on the Github website by clicking on the green up-right button "New". Then, you have to give information on your repository (see the example in the image below). Please select a "Public" repository, it will help for the management of the website, and check the box "Initialize this repository with a README".
 
 ![Create a new repository](img/new_repo.png)
 
@@ -25,7 +25,7 @@ Once the repository is created navigate to the webpage of the repository. The we
 Then, Github should switch to this new gh-pages branch, to contains only the license and the readme files from the master branch. Arrived here, you already have your homepage at the following address "https://umrlastig.github.io/name_of_your_repo". For now, the homepage is quite empty and only displays the content of the readme.md file.
 
 ## Clone the repository on your computer
-From now on, most of the work to create your homepage will be done from your desktop computer and not online on the Github website anymore. So, you need to clone your repository on your computer. You have two options to clone the repository with a git terminal, or with the [Github Desktop application](https://desktop.github.com/).
+From now on, most of the work to create your homepage will be done from your desktop computer and not online on the Github website anymore. So, you need to clone your repository on your computer (the one you created on Github in the last step). You have two options to clone the repository with a git terminal, or with the [Github Desktop application](https://desktop.github.com/).
 
 ### Clone with Git terminal
 
@@ -104,6 +104,59 @@ To change the style of the template, you have to edit the css file **resume.css*
 > .text-primary {
   color: #94c01a !important;
 }
+
+The template contains more information than need for most homepages. You just need to comment or remove the parts of the code you don't need in **index.html**. For instance, if you don't need a news section, remove (or comment for later uses) the following block code:
+
+>     <section class="resume-section p-3 p-lg-5 d-flex justify-content-center" id="news">
+      <div class="w-100">
+        <h2 class="mb-5">News</h2>
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+          </ol>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="img/orthez_google.png" class="d-block w-100" alt="...">
+              <div class="carousel-caption d-none d-md-block">
+                <h5>First news</h5>
+                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img src="img/orthez_IGN.png" class="d-block w-100" alt="...">
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Second news</h5>
+                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img src="img/orthez_OSM.png" class="d-block w-100" alt="...">
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Third news</h5>
+                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+              </div>
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+Then, to remove the section from the left navigation bar, remove the following lines at the beginning of the document:
+
+>         <li class="nav-item">
+          <a class="nav-link js-scroll-trigger lang-en" href="#news">News</a>
+          <a class="nav-link js-scroll-trigger lang-fr" href="#news">Actualités</a>
+        </li>
 
 Only some advanced modification of the template requires the edition of the main Javascript file of the template, *js/resume.js*.
 
