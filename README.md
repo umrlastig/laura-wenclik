@@ -114,7 +114,7 @@ The "Publications" section is generated from the HAL repository of each research
 1. Fill your HAL repository with all your publications.
 2. Edit the HAL-id used when the page is loaded: in the index.html, modify the line below by changing 'guillaume-touya' to your own HAL-id.
 
-> <body id="page-top" onload="reviewingVis('reviewing.json'); getJournalPublicationsAuthor('guillaume-touya');getConfPublicationsAuthor('guillaume-touya');getBookPublicationsAuthor('guillaume-touya');getOtherPublicationsAuthor('guillaume-touya');"\>
+> \<body id="page-top" onload="reviewingVis('reviewing.json');getJournalPublicationsAuthor('guillaume-touya');getConfPublicationsAuthor('guillaume-touya');getBookPublicationsAuthor('guillaume-touya');getOtherPublicationsAuthor('guillaume-touya');">
 
 3. If you want to change the style or the categories, please feel free to edit your copy of the hal.js library.
 
