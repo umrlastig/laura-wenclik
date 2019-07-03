@@ -11,7 +11,7 @@ The website architecture is described in the image below. Github repositories ar
 
 A template to build a homepage is provided in the [researcher_homepage repository](https://github.com/umrlastig/researcher_homepage). The following sections of this tutorial explain how to use this template.
 
-To get invited in this LASTIG organization, please contact one of the administrators of the organization (for instance your research team leader) with the login of your Github account.
+To get invited in this LASTIG organization, please contact one of the administrators of the organization (for instance one person among Guillaume Touya, Imran Lokhat, Sidonie Christophe, Clément Mallet, Bruno Vallet, Arnaud Le Guilcher, Mathieu Brédif, Marie-Dominique Van Damme) with the login of your Github account.
 
 ## Create your homepage repository
 Once you are a member of the [UMR LASTIG organization](https://github.com/umrlastig/), you can create a new repository on the Github website by clicking on the green up-right button "New". Then, you have to give information on your repository (see the example in the image below). Please select a "Public" repository, it will help for the management of the website, and check the box "Initialize this repository with a README".
