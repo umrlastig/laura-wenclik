@@ -76,7 +76,13 @@ The easiest way to do this is the following:
 
 ![Download zip file](img/local_files.png)
 
-Now, your website is ready but only in your local folder. You need to commit and push it to Github to have it available on the web. You can do both either with the Git shell or with Github desktop. Don't forget to push your new files to your remote Github repo after you commit them.
+Now, your website is ready but only in your local folder. You need to commit and push it to Github to have it available on the web. You can do both either with the Git shell or with Github desktop. Here is the command line with the Git shell:
+
+> $ git commit -a -m "Commit the template"
+
+ Don't forget to push your new files to your remote Github repo after you commit them. Here is the command line if you don't use Desktop:
+
+> $ git push origin gh-pages
 
 After the Push, if you look at the address of your homepage ("https://umrlastig.github.io/name_of_your_repo"), you should now see the template homepage rather than the README.md file. You are now ready to modify the template with your own information.
 
