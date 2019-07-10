@@ -236,6 +236,29 @@ Regarding the reviewing activities in *conferences*, the metadata to fill in the
      {"name": "GeneICA", "role": "Reviewer", "year": 2013, "type": "CREW", "description": "16th ICA Workshop on Generalisation and Multiple Representation", "url": "https://generalisation.icaci.org/prevevents/43-workshop2013general.html"},
   ],      
 
+The rendering of the reviewing graphics is set up by default to fit the height and width necessary to show this years span, and this number of lines (journals/conferences). If your reviewing activities span from 2015 to 2019, you need to change the values in the constants declared in the **reviewing.js** file (see code below).
+
+> const CVIS = {
+    BOOK_LIST: ["Books"],
+    JOUR_LIST: ["IJGIS", "CaGIS", "TiGIS", "JOSIS", "IJGI", "IJC", "Carto", "Other GIS", "SpatialCog", "IEEE", "ISPRS"],
+    CONF_LIST: ["ICC", "GIScience", "GeneICA", "SAGEO", "ISPRS", "ISSDQ"],
+    TIME_INTERVAL: ["2006", "2021"],
+    SVG_W: 800,
+    TITLE_Y: 26,
+    CAPTION_X: 40,
+    TRACK_WIDTH: 300,
+    TRACK_HEIGHT: 18,
+    TRACK_X: 110,
+    CELL_SIZE: 12,
+    CELL_STROKE: 2,
+    CELL_MARGIN: 2,
+};
+
+If you have more or less journals, you have to change the height of the graph. This can be done in the **reviewing.js** file: in the example below, the *320* corresponds to the height of the graph and can be changed if necessary.
+
+>  reviewing4x(data.journals, CVIS.JOUR_LIST, LEGENDS.journals, "#revj", 320, "Journals");
+
+
 ### Languages
 The homepage is available in two languages for now, French and English. You just have to use the checkbox to switch the language. The language switch works with the html classes "lang-en" and "lang-fr": when the language is English, the html components with the class "lang-fr" are hidden and when the language is set to French, the components with class "lang-en" are hidden. So, you just have to double each text component in the index.html to allow different languages. For instance, this piece of code below adds a navigation bar entry displayed "About" in English and "Présentation" in French
 
