@@ -177,6 +177,8 @@ The "Publications" section is generated from the HAL repository of each research
 
 3. If you want to change the style or the categories, please feel free to edit your copy of the hal.js library.
 
+> There is no difference in HAL metadata between a conference paper selected on long paper peer-reviewing and a paper selected on abstract or short paper tracks. To make sure your abstract-selected publications do fall in the good category, you have to add in the "Commentaire" metadata one of the following keywords: "poster", "workshop", or "short".
+
 ### Experience section
 
 The *Experience* section is proposed in two ways in the template, a simple list presentation similar to the *Education* section, and a vertical timeline. You have to keep the one you prefer and remove the other from the *index.html* file. Be careful to keep the consistency between the **id** of the section and the one referenced in the navigation bar (see code below that refers to the timeline):
