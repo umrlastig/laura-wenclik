@@ -58,7 +58,7 @@ var getJournalPublicationsAuthor = function(halId){
 
   // Open a new connection, using the GET request on the URL endpoint
   var url = "https://api.archives-ouvertes.fr/search/?q=authIdHal_s:%22"+halId
-    +"%22&wt=json&fl=citationFull_s&fq=docType_s:\"ART\"&fl=producedDateY_i,halId_s,fileMain_s&sort=producedDateY_i desc";
+    +"%22&wt=json&fl=citationFull_s&fq=docType_s:\"ART\"&fq=peerReviewing_s:\"1\"&fl=producedDateY_i,halId_s,fileMain_s&sort=producedDateY_i desc";
   request.open('GET', url, true);
   //console.log(url);
 
@@ -85,7 +85,7 @@ var getConfPublicationsAuthor = function(halId){
 
   // Open a new connection, using the GET request on the URL endpoint
   var url = "https://api.archives-ouvertes.fr/search/?q=authIdHal_s:%22"+halId
-    +"%22&wt=json&fl=citationFull_s&fq=docType_s:\"COMM\"&fq=invitedCommunication_s:\"0\"&fl=producedDateY_i,halId_s,fileMain_s&sort=producedDateY_i desc";
+    +"%22&wt=json&fl=citationFull_s&fq=docType_s:\"COMM\"&fq=invitedCommunication_s:\"0\"&fq=-comment_s:(\"workshop\" OR \"poster\" OR \"short\")&fl=producedDateY_i,halId_s,fileMain_s&sort=producedDateY_i desc";
   request.open('GET', url, true);
   //console.log(url);
 
@@ -148,7 +148,7 @@ var getWorkshopPublicationsAuthor = function(halId){
     // Begin accessing JSON data here
     var data = JSON.parse(this.response);
     //console.log(data.response);
-    //console.log(data.response.docs);
+    console.log(data.response.docs);
     data.response.docs.forEach(docs => {
       // first create the list element with the citation
       createPubHTML(docs, parentB);
@@ -165,7 +165,7 @@ var getOtherPublicationsAuthor = function(halId){
 
   // Open a new connection, using the GET request on the URL endpoint
   var url = "https://api.archives-ouvertes.fr/search/?q=authIdHal_s:%22"+halId
-    +"%22&wt=json&fl=citationFull_s&fq=docType_s:(\"REPORT\" OR \"THESE\" OR \"HDR\" OR \"UNDEFINED\")&fl=producedDateY_i,halId_s,docType_s,fileMain_s&sort=producedDateY_i desc";
+    +"%22&wt=json&fl=citationFull_s&fq=docType_s:(\"REPORT\" OR \"THESE\" OR \"HDR\")&fl=producedDateY_i,halId_s,docType_s,fileMain_s&sort=producedDateY_i desc";
   request.open('GET', url, true);
   //console.log(url);
 
@@ -183,6 +183,94 @@ var getOtherPublicationsAuthor = function(halId){
   };
 
   request.send();
+
+  // Create a second request variable and assign a new XMLHttpRequest object to it.
+  var request2 = new XMLHttpRequest();
+
+  // Open a new connection, using the GET request on the URL endpoint
+  var url2 = "https://api.archives-ouvertes.fr/search/?q=authIdHal_s:%22"+halId
+    +"%22&wt=json&fl=citationFull_s&fq=docType_s:(\"ART\")&fq=peerReviewing_s:\"0\"&fl=producedDateY_i,halId_s,docType_s,fileMain_s&sort=producedDateY_i desc";
+  request2.open('GET', url2, true);
+  //console.log(url);
+
+  var parentO = document.getElementById("pubO");
+
+  request2.onload = function () {
+    // Begin accessing JSON data here
+    var data = JSON.parse(this.response);
+    //console.log(data.response);
+    //console.log(data.response.docs);
+    data.response.docs.forEach(docs => {
+      // first create the list element with the citation
+      createPubHTML(docs, parentO);
+    })
+  };
+
+  request2.send();
+}
+
+
+var getKeywordPublicationsAuthor = function(halId, keyword){
+  // Create a request variable and assign a new XMLHttpRequest object to it.
+  var request = new XMLHttpRequest();
+
+  // Open a new connection, using the GET request on the URL endpoint
+  var url = "https://api.archives-ouvertes.fr/search/?q=authIdHal_s:%22"+halId+"%22&wt=json&fq=keyword_s:"+keyword+"&fl=citationFull_s,docType_s&sort=producedDateY_i desc";
+  request.open('GET', url, true);
+  var parent = document.getElementById("pub");
+
+  request.onload = function () {
+    // Begin accessing JSON data here
+    var data = JSON.parse(this.response);
+    data.response.docs.forEach(docs => {
+      // Log each doc id
+      createPubHTML(docs, parent);
+    })
+  };
+
+  request.send();
+}
+
+var getKeywordPublicationsAuthorYear = function(halId, keyword,startYear){
+
+  // get current year
+  var parent = document.getElementById("pub");
+  var today = new Date();
+  var year = today.getFullYear();
+  var urls = new Array(year-startYear+1);
+  var years = new Array(year-startYear+1);
+  for(i=0;i <= year-startYear;i++){
+    yeari = year-i;
+    years[i] = yeari;
+    urls[i]="https://api.archives-ouvertes.fr/search/?q=authIdHal_s:%22"+halId+"%22&wt=json&fq=keyword_s:%22"+keyword+"%22&fq=producedDateY_i:"+yeari+"&fl=citationFull_s,docType_s&sort=producedDateY_i desc";
+  }
+
+  var request = new XMLHttpRequest();
+  (function loop(i, length) {
+      if (i>= length) {
+          return;
+      }
+      var url = urls[i];
+
+      request.open("GET", url);
+      request.onreadystatechange = function() {
+          if(request.readyState === XMLHttpRequest.DONE && request.status === 200) {
+              var data = JSON.parse(request.responseText);
+              if(data.response.docs.length>0){
+                  divElement = document.createElement('div');
+                  divElement.setAttribute("class","subheading mb-3 mt-3");
+                  divElement.innerHTML = years[i];
+                  const yearParentElement = parent.appendChild(divElement);
+              }
+              data.response.docs.forEach(docs => {
+                // Log each doc id
+                createPubHTML(docs, parent);
+              });
+              loop(i + 1, length);
+          }
+      }
+      request.send();
+  })(0, urls.length);
 }
 
 
