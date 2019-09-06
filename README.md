@@ -53,6 +53,10 @@ From now on, most of the work to create your homepage will be done from your des
 
 * Install the Github Desktop application
 
+> be careful, if you are installing Github Desktop from IGN, Saint-Mandé, you need to fix the proxy settings of the tool. Go to C:\User\\@username\\.gitconfig and add the following line in the file: [http]
+    proxy = http://proxy.ign.fr:3128
+
+
 * In the repository Github page, click "Clone or download" green button on the right.
 
 * In the popup that opens (see image above), click on the "Open in Desktop" button. See this [Github tutorial](https://help.github.com/en/desktop/guides/contributing-to-projects/cloning-a-repository-from-github-to-github-desktop/) for more information.
