@@ -58,7 +58,7 @@ var getJournalPublicationsAuthor = function(halId){
 
   // Open a new connection, using the GET request on the URL endpoint
   var url = "https://api.archives-ouvertes.fr/search/?q=authIdHal_s:%22"+halId
-    +"%22&wt=json&fl=citationFull_s&fq=docType_s:\"ART\"&fq=peerReviewing_s:\"1\"&fl=producedDateY_i,halId_s,fileMain_s&sort=producedDateY_i desc";
+    +"%22&wt=json&fl=citationFull_s,producedDateY_i,halId_s,fileMain_s&fq=docType_s:\"ART\"&fq=peerReviewing_s:\"1\"&sort=producedDateY_i desc";
   request.open('GET', url, true);
   //console.log(url);
 
@@ -85,7 +85,7 @@ var getConfPublicationsAuthor = function(halId){
 
   // Open a new connection, using the GET request on the URL endpoint
   var url = "https://api.archives-ouvertes.fr/search/?q=authIdHal_s:%22"+halId
-    +"%22&wt=json&fl=citationFull_s&fq=docType_s:\"COMM\"&fq=invitedCommunication_s:\"0\"&fq=-comment_s:(\"workshop\" OR \"poster\" OR \"short\")&fl=producedDateY_i,halId_s,fileMain_s&sort=producedDateY_i desc";
+    +"%22&wt=json&fq=docType_s:\"COMM\"&fq=invitedCommunication_s:\"0\"&fq=-comment_s:(\"workshop\" OR \"poster\" OR \"short\")&fl=citationFull_s,producedDateY_i,halId_s,fileMain_s&sort=producedDateY_i desc";
   request.open('GET', url, true);
   //console.log(url);
 
@@ -111,7 +111,7 @@ var getBookPublicationsAuthor = function(halId){
 
   // Open a new connection, using the GET request on the URL endpoint
   var url = "https://api.archives-ouvertes.fr/search/?q=authIdHal_s:%22"+halId
-    +"%22&wt=json&fl=citationFull_s&fq=docType_s:\"COUV\"&fl=producedDateY_i,halId_s,fileMain_s&sort=producedDateY_i desc";
+    +"%22&wt=json&fq=docType_s:\"COUV\"&fl=citationFull_s,producedDateY_i,halId_s,fileMain_s&sort=producedDateY_i desc";
   request.open('GET', url, true);
   //console.log(url);
 
@@ -138,7 +138,7 @@ var getWorkshopPublicationsAuthor = function(halId){
 
   // Open a new connection, using the GET request on the URL endpoint
   var url = "https://api.archives-ouvertes.fr/search/?q=authIdHal_s:%22"+halId
-    +"%22&wt=json&fl=citationFull_s&fq=docType_s:(\"POSTER\" OR \"COMM\")&fq=comment_s:(\"workshop\" OR \"poster\" OR \"short\")&fl=producedDateY_i,halId_s,docType_s,fileMain_s,comment_s&sort=producedDateY_i desc";
+    +"%22&wt=json&fq=docType_s:(\"POSTER\" OR \"COMM\")&fq=comment_s:(\"workshop\" OR \"poster\" OR \"short\")&fl=citationFull_s,producedDateY_i,halId_s,docType_s,fileMain_s,comment_s&sort=producedDateY_i desc";
   request.open('GET', url, true);
   //console.log(url);
 
@@ -165,7 +165,7 @@ var getOtherPublicationsAuthor = function(halId){
 
   // Open a new connection, using the GET request on the URL endpoint
   var url = "https://api.archives-ouvertes.fr/search/?q=authIdHal_s:%22"+halId
-    +"%22&wt=json&fl=citationFull_s&fq=docType_s:(\"REPORT\" OR \"THESE\" OR \"HDR\")&fl=producedDateY_i,halId_s,docType_s,fileMain_s&sort=producedDateY_i desc";
+    +"%22&wt=json&fq=docType_s:(\"REPORT\" OR \"THESE\" OR \"HDR\")&fl=citationFull_s,producedDateY_i,halId_s,docType_s,fileMain_s&sort=producedDateY_i desc";
   request.open('GET', url, true);
   //console.log(url);
 
@@ -189,7 +189,7 @@ var getOtherPublicationsAuthor = function(halId){
 
   // Open a new connection, using the GET request on the URL endpoint
   var url2 = "https://api.archives-ouvertes.fr/search/?q=authIdHal_s:%22"+halId
-    +"%22&wt=json&fl=citationFull_s&fq=docType_s:(\"ART\")&fq=peerReviewing_s:\"0\"&fl=producedDateY_i,halId_s,docType_s,fileMain_s&sort=producedDateY_i desc";
+    +"%22&wt=json&fq=docType_s:(\"ART\")&fq=peerReviewing_s:\"0\"&fl=citationFull_s,producedDateY_i,halId_s,docType_s,fileMain_s&sort=producedDateY_i desc";
   request2.open('GET', url2, true);
   //console.log(url);
 
@@ -215,7 +215,7 @@ var getKeywordPublicationsAuthor = function(halId, keyword){
   var request = new XMLHttpRequest();
 
   // Open a new connection, using the GET request on the URL endpoint
-  var url = "https://api.archives-ouvertes.fr/search/?q=authIdHal_s:%22"+halId+"%22&wt=json&fq=keyword_s:"+keyword+"&fl=citationFull_s,docType_s&sort=producedDateY_i desc";
+  var url = "https://api.archives-ouvertes.fr/search/?q=authIdHal_s:%22"+halId+"%22&wt=json&fq=keyword_s:"+keyword+"&fl=citationFull_s,docType_s,fileMain_s&sort=producedDateY_i desc";
   request.open('GET', url, true);
   var parent = document.getElementById("pub");
 
@@ -242,7 +242,7 @@ var getKeywordPublicationsAuthorYear = function(halId, keyword,startYear){
   for(i=0;i <= year-startYear;i++){
     yeari = year-i;
     years[i] = yeari;
-    urls[i]="https://api.archives-ouvertes.fr/search/?q=authIdHal_s:%22"+halId+"%22&wt=json&fq=keyword_s:%22"+keyword+"%22&fq=producedDateY_i:"+yeari+"&fl=citationFull_s,docType_s&sort=producedDateY_i desc";
+    urls[i]="https://api.archives-ouvertes.fr/search/?q=authIdHal_s:%22"+halId+"%22&wt=json&fq=keyword_s:%22"+keyword+"%22&fq=producedDateY_i:"+yeari+"&fl=citationFull_s,docType_s,fileMain_s&sort=producedDateY_i desc";
   }
 
   var request = new XMLHttpRequest();
@@ -326,7 +326,7 @@ var createPubHTML = function(docs, parent){
   spanElement.appendChild(inputElement);
   // create an a element with the url to hal
   aHALElement = document.createElement('a');
-  aHALElement.setAttribute("href",docs.halId_s);
+  aHALElement.setAttribute("href","https://hal.archives-ouvertes.fr/"+docs.halId_s);
   aHALElement.setAttribute("class","imgLink");
   imgElement = document.createElement('img');
   imgElement.setAttribute("title","HAL");
@@ -337,7 +337,7 @@ var createPubHTML = function(docs, parent){
   pubLinkElement.appendChild(aHALElement);
   // create an a element with the url of the pdf
   pdfElement = document.createElement('a');
-  pdfElement.setAttribute("href",docs.fileMainAnnex_s);
+  pdfElement.setAttribute("href",docs.fileMain_s);
   pdfElement.setAttribute("class","imgLink");
   imgPdfElement = document.createElement('img');
   imgPdfElement.setAttribute("title","pdf");
@@ -384,7 +384,7 @@ var createTalkHTML = function(docs, parent){
   pubLinkElement.appendChild(aHALElement);
   // create an a element with the url of the pdf
   pdfElement = document.createElement('a');
-  pdfElement.setAttribute("href",docs.fileMain_s);
+  pdfElement.setAttribute("href",docs.fileMainAnnex_s);
   pdfElement.setAttribute("class","imgLink");
   imgPdfElement = document.createElement('img');
   imgPdfElement.setAttribute("title","pdf");
