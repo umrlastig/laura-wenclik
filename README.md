@@ -16,6 +16,8 @@ To get invited in this LASTIG organization, please contact one of the administra
 ## Create your homepage repository
 Once you are a member of the [UMR LASTIG organization](https://github.com/umrlastig/), you can create a new repository on the Github website by clicking on the green up-right button "New". Then, you have to give information on your repository (see the example in the image below). Please select a "Public" repository, it will help for the management of the website, and check the box "Initialize this repository with a README".
 
+> For the name of the repository, please use the template **firstname-lastname** to keep standard legible URLs in the website.
+
 ![Create a new repository](img/new_repo.png)
 
 Once the repository is created navigate to the webpage of the repository. The website will be hosted here thanks to the [Github pages technology](https://pages.github.com/). To have a website hosted here and generated from the files in the repository, you have to create a branch of the repository called "gh-pages". So, click on the button "Branch:master" (see image below), type "gh-pages", and then click below on "Create branch: gh-pages".
@@ -169,6 +171,15 @@ Then, to remove the section from the left navigation bar, remove the following l
         </li>
 
 Only some advanced modification of the template requires the edition of the main Javascript file of the template, *js/resume.js*.
+
+### Photo
+If you want to put a photo (it is recommended but not forced), please use a square 256*256 photo to make sure the photo is nicely displayed in the "members" sections of the website.
+
+The location of the photo file is defined in the first lines of the *index.html* (here img/touya.png):
+
+>     <span class="d-none d-lg-block">
+        <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="img/touya.png" alt="">
+      </span>
 
 ### Publications
 
