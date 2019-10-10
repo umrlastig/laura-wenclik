@@ -14,15 +14,17 @@
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom fonts for this template -->
-  <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet">
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i">
+  <link rel="stylesheet" href="vendor/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="vendor/academicons/css/academicons.min.css"/>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
 
   <!-- Custom styles for this template -->
   <link href="css/animate.css" rel="stylesheet">
   <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
   <link href="css/resume.css" rel="stylesheet">
+  <link href="css/extras.css" rel="stylesheet">
 
   <!-- scripts on load -->
   <script src="vendor/d3/d3.min.js"></script>
@@ -31,15 +33,15 @@
 
 </head>
 
-<body id="page-top" onload="reviewingVis('reviewing.json'); getJournalPublicationsAuthor('guillaume-touya');getConfPublicationsAuthor('guillaume-touya');getBookPublicationsAuthor('guillaume-touya');getWorkshopPublicationsAuthor('guillaume-touya');getOtherPublicationsAuthor('guillaume-touya');getInvitedTalksAuthor('guillaume-touya');">
+<body id="page-top" onload="reviewingVis('reviewing.json'); getPublicationsAuthor('guillaume-touya');">
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
     <select class="selectpicker" data-width="fit">
-      <option data-content='<span class="flag-icon flag-icon-us"></span> English'>English</option>
-      <option  data-content='<span class="flag-icon flag-icon-fr"></span> Français'>Français</option>
+      <option data-content='<span class="flag-icon flag-icon-us"></span>'>English</option>
+      <option data-content='<span class="flag-icon flag-icon-fr"></span>'>Français</option>
     </select>
-    <a class="nav-link text-muted subheading lang-en" href="https://umrlastig.github.io/geovis">Team</a>
-    <a class="nav-link text-muted subheading lang-fr" href="https://umrlastig.github.io/geovis">Equipe</a>
+    <a class="nav-link text-muted subheading" href="/website">LASTIG</a>
+    <a class="nav-link text-muted subheading" href="/geovis">GEOVIS</a>
     <a class="navbar-brand js-scroll-trigger" href="#page-top">
       <span class="d-block d-lg-none">Guillaume Touya</span>
       <span class="d-none d-lg-block">
@@ -106,7 +108,7 @@
             <i class="fab fa-linkedin-in"></i>
           </a>
           <a href="https://www.researchgate.net/profile/Guillaume_Touya">
-            <i class="fab fa-researchgate"></i>
+            <i class="ai ai-researchgate"></i>
           </a>
           <a href="https://github.com/gtouya">
             <i class="fab fa-github"></i>
@@ -118,7 +120,16 @@
             <i class="fab fa-facebook-f"></i>
           </a>
           <a href="https://scholar.google.fr/citations?user=Cbc_R2IAAAAJ">
-            <i class="fab fa-google"></i>
+            <i class="ai ai-google-scholar"></i>
+          </a>
+          <a href="#">
+            <i class="ai ai-publons"></i>
+          </a>
+          <a href="#">
+            <i class="ai ai-orcid"></i>
+          </a>
+          <a href="#">
+            <i class="ai"><img src="img/icons/hal-b2.svg" width=45px/></i>
           </a>
         </div>
       </div>
@@ -466,26 +477,25 @@
       <div class="w-100">
         <h2 class="mb-5">Publications</h2>
 
-        <div class="subheading mb-3 mt-3">Journals</div>
-        <ol id="pubJ" class="sub">
-        </ol>
+        <span id="pubACL"><div class="subheading mb-3 mt-3">[ACL] Journals</div></span>
+        <span id="pubACLN"><div class="subheading mb-3 mt-3">[ACLN] Journals</div></span>
+        <span id="pubASCL"><div class="subheading mb-3 mt-3">[ASCL] Others</div></span>
+        <span id="pubACTI"><div class="subheading mb-3 mt-3">[ACTI] Conferences</div></span>
+        <span id="pubACTN"><div class="subheading mb-3 mt-3">[ACTN] Conferences</div></span>
+        <span id="pubCOM"><div class="subheading mb-3 mt-3">[COM] Conferences</div></span>
+        <span id="pubOS"><div class="subheading mb-3 mt-3">[OS] Books and Chapters</div></span>
+        <span id="pubDO"><div class="subheading mb-3 mt-3">[DO] Books and Chapters</div></span>
+        <span id="pubAFF"><div class="subheading mb-3 mt-3">[AFF] Posters</div></span>
+        <span id="pubAP"><div class="subheading mb-3 mt-3">[AP] Preprints</div></span>
+        <span id="pubTH"><div class="subheading mb-3 mt-3">[TH] Dissertations</div></span>
+        <span id="pubINV"><div class="subheading mb-3 mt-3">[INV] Invited Talks</div></span>
+        <span id="pubPV"><div class="subheading mb-3 mt-3">[PV] Popularization</div></span>
 
-        <div class="subheading mb-3 mt-3">Conferences</div>
-        <ol id="pubC" class="sub">
-        </ol>
-
-        <div class="subheading mb-3 mt-3">Books and Chapters</div>
-        <ol id="pubB" class="sub">
-        </ol>
-
-        <div class="subheading mb-3 mt-3">Workshops and Posters</div>
-        <ol id="pubW" class="sub">
-        </ol>
-
-        <div class="subheading mb-3 mt-3">Other Publications (Technical Reports, Dissertations, Dissemination)</div>
-        <ol id="pubO" class="sub">
-        </ol>
-
+        <!-- provide a subset of the publications based on a keyword -->
+        <!--
+        <span id="pubGeneralisation"><div class="subheading mb-3 mt-3">Généralisation</div></span>
+	<script> getKeywordPublicationsAuthorStartYear('guillaume-touya', 'Généralisation', 2006, "pubGeneralisation"); </script>
+        -->
       </div>
     </section>
 
