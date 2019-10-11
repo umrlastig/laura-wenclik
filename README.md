@@ -1,15 +1,15 @@
-# Readme for researcher_homepage
+# Readme for firstname-lastname-template
 
 # How to use this template to create your homepage
 This repository contains a template for the homepage of the LASTIG researchers. You can find below a tutorial to create your homepage using this template.
 
 ## Create a Github account and get invited in UMR LASTIG organization
 The first step is to create an account on Github and to become a member of the [UMR LASTIG organization on Github](https://github.com/umrlastig/).
-The website architecture is described in the image below. Github repositories are contained in the [UMR LASTIG organization](https://github.com/umrlastig/). There is one repository for the [homepage of the lab](https://github.com/umrlastig/website), one repository for the homepage of each of the four research teams (e.g. [GEOVIS team repository](https://github.com/umrlastig/geovis)), and one repository for each member of the LASTIG to host his/her homepage (e.g. [Guillaume Touya's homepage repository](https://github.com/umrlastig/gtouya_homepage)). The architecture of the website was designed this way for a simple management of administration rights: as each researcher creates his/her own repository to host his/her homepage, each researcher is the administrator of the homepage, and has the responsibility to keep it up-to-date.
+The website architecture is described in the image below. Github repositories are contained in the [UMR LASTIG organization](https://github.com/umrlastig/). There is one repository for the [homepage of the lab](https://github.com/umrlastig/umrlastig.github.io), one repository for the homepage of each of the four research teams (e.g. [GEOVIS team repository](https://github.com/umrlastig/geovis)), and one repository for each member of the LASTIG to host his/her homepage (e.g. [Guillaume Touya's homepage repository](https://github.com/umrlastig/guillaume-touya)). The architecture of the website was designed this way for a simple management of administration rights: as each researcher creates his/her own repository to host his/her homepage, each researcher is the administrator of the homepage, and has the responsibility to keep it up-to-date.
 
 ![LASTIG website architecture](img/website_architecture.png)
 
-A template to build a homepage is provided in the [researcher_homepage repository](https://github.com/umrlastig/researcher_homepage). The following sections of this tutorial explain how to use this template.
+A template to build a homepage is provided in the [firstname-lastname-template repository](https://github.com/umrlastig/firstname-lastname-template). The following sections of this tutorial explain how to use this template.
 
 To get invited in this LASTIG organization, please contact one of the administrators of the organization (for instance one person among Guillaume Touya, Imran Lokhat, Sidonie Christophe, Clément Mallet, Bruno Vallet, Arnaud Le Guilcher, Mathieu Brédif, Marie-Dominique Van Damme) with the login of your Github account.
 
@@ -69,7 +69,7 @@ From now on, most of the work to create your homepage will be done from your des
 
 ## Copy the template into your repository
 
-Arrived here, you have the files of the repository branch gh-pages in a folder called "your_repo_name" (e.g. "qttruong_homepage" in the tutorial images). You can check the folder on your computer, it should contain two files (LICENSE, and README.md). Now we are going to copy the template homepage into this folder.
+Arrived here, you have the files of the repository branch gh-pages in a folder called "your_repo_name" (following the template firstname-lastname, which is not the case in the image). You can check the folder on your computer, it should contain two files (LICENSE, and README.md). Now we are going to copy the template homepage into this folder.
 
 The easiest way to do this is the following:
 * Go to the [template repository](https://github.com/umrlastig/researcher_homepage/tree/gh-pages).
