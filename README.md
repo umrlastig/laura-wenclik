@@ -1,2 +1,4 @@
-# researcher_webpage
-Template for LASTIG researcherswebpage
+# firstname-lastname-template
+  
+
+Template for LASTIG researchers personal webpage.
