@@ -47,7 +47,7 @@ From now on, most of the work to create your homepage will be done from your des
 
 * Press Enter. Your local clone of the repository will be created.
 
-* Then, switch to the "gh-pages" branch you create earlier:
+* Then, change the current working directory to the local firstname-lastname repository that you have just created and switch to the "gh-pages" branch you create earlier:
 
 > $ git checkout gh-pages
 
@@ -82,7 +82,7 @@ The easiest way to do this is the following:
 
 ![Download zip file](img/local_files.png)
 
-Now, your website is ready but only in your local folder. You need to commit and push it to Github to have it available on the web. You can do both either with the Git shell or with Github desktop. Here is the command line with the Git shell:
+Now, your website is ready but only in your local folder. You need to commit and push it to Github to have it available on the web. You can do both either with the Git shell or with Github desktop. Here is the command line with the Git shell (NB: If it is your first commit, you have to add your local files and repositories to Git's versionning system first: $ git add .):
 
 > $ git commit -a -m "Commit the template"
 
